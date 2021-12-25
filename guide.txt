@@ -1,0 +1,71 @@
+Installation Guide:
+    install req.txt using "pip install -r req.txt"
+        -- python version 3.6, 3.7, 3.8, 3.9*
+
+    Train Command:
+        for Windows:
+            mobilenet:
+                set IMAGE_SIZE=224
+                set ARCHITECTURE="mobilenet_0.50_%IMAGE_SIZE%"
+                python -m scripts.retrain   --bottleneck_dir=tf_files/bottlenecks   --how_many_training_steps=500   --model_dir=tf_files/models/   --summaries_dir=tf_files/training_summaries/"%ARCHITECTURE%"   --output_graph=tf_files/retrained_graph.pb   --output_labels=tf_files/retrained_labels.txt   --architecture="%ARCHITECTURE%"   --image_dir=tf_files/mudras
+            
+            inception_v3:
+                set ARCHITECTURE="inception_v3"
+                python -m scripts.retrain   --bottleneck_dir=tf_files/bottlenecks   --how_many_training_steps=500   --model_dir=tf_files/models/   --summaries_dir=tf_files/training_summaries/"%ARCHITECTURE%"   --output_graph=tf_files/retrained_graph.pb   --output_labels=tf_files/retrained_labels.txt   --architecture="%ARCHITECTURE%"   --image_dir=tf_files/mudras
+
+        for Linux:
+            mobilenet:
+                IMAGE_SIZE=224
+                ARCHITECTURE="mobilenet_0.50_${IMAGE_SIZE}"
+                python3 -m scripts.retrain   --bottleneck_dir=tf_files/bottlenecks   --how_many_training_steps=500   --model_dir=tf_files/models/   --summaries_dir=tf_files/training_summaries/"${ARCHITECTURE}"   --output_graph=tf_files/retrained_graph.pb   --output_labels=tf_files/retrained_labels.txt   --architecture="${ARCHITECTURE}"   --image_dir=tf_files/mudras
+            inception_v3:
+                ARCHITECTURE="inception_v3"
+                python3 -m scripts.retrain   --bottleneck_dir=tf_files/bottlenecks   --how_many_training_steps=500   --model_dir=tf_files/models/   --summaries_dir=tf_files/training_summaries/"${ARCHITECTURE}"   --output_graph=tf_files/retrained_graph.pb   --output_labels=tf_files/retrained_labels.txt   --architecture="${ARCHITECTURE}"   --image_dir=tf_files/mudras
+
+        Step 1:
+            put image on tf_files/mudras, name of folder name is label_name
+        Step 2:
+            Open terminal/Cmd:
+                use above command
+    
+    1. Offline Video Training Process:
+        for windows/Linux:
+
+        Step 1:
+            Open cmd / Terminal from current path
+
+        Step 2:
+            Paste whatever video into folder `offline_training` with corresponding label_name
+
+        Step 3:
+            run Offline_train file, using `python offline_train.py`
+            Once the process has completed, you may see no of image has processed table
+        
+        Step 4:
+            Use Train Command
+
+    2. Offline Image Training Process:
+        for windows/Linux:
+        Step 1:
+            Open cmd / Terminal from current path
+       
+        Step 2:
+            Paste whatever image into folder tf_files/mudras with corresponding label_name
+        
+        Step 3:
+            Use Train command 
+            
+    3. Offline Video Testing Process:
+        for windows/Linux:
+
+        Step 1:
+            Open cmd / Terminal from current path
+
+        Step 2:
+            Paste whatever video into folder `offline_testing` with corresponding label_name
+
+        Step 3:
+            run Offline_test file, using `python offline_test.py`
+            Once the process has completed, you may see no of image has processed table
+            With accuracy
+        

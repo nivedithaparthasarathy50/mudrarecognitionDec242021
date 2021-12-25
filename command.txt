@@ -1,0 +1,99 @@
+live Web Train:
+    python3 live_web_train_new.py --label_name alapadmam -ct 20
+    python3 live_web_train_new.py --label_name thripathakam -ct 20
+    python3 live_web_train_new.py --label_name shikaram -ct 20
+    python3 live_web_train_new.py --label_name kapitham -ct 20
+    python3 live_web_train_new.py --label_name katakamukam -ct 20
+
+    step1:
+        copy above one of the command and use 'ctrl+ shift + v' paste in terminal 
+        (Home/user/Desktop/undesrstandingstepbystepvictora/tensorflow-for-poets-2)
+        Hint: 
+            1. Go to Files
+            2. Desktop/undesrstandingstepbystepvictora/tensorflow-for-poets-2
+            3. Right Click ->  open in terminal
+        
+    step2:
+        move to
+            --> Home/user/Desktop/undesrstandingstepbystepvictora/tensorflow-for-poets-2/tf_files/flower_photos/"label_name"/
+            Hint: 
+            1. Go to Files
+            2. Desktop/undesrstandingstepbystepvictora/tensorflow-for-poets-2/tf_files/flower_photos
+            3. based on label_name move 
+
+            --> check image are in that folder correct or not
+        if corret move to step 3
+
+    step3:
+        IMAGE_SIZE=224
+	    ARCHITECTURE="mobilenet_0.50_${IMAGE_SIZE}"
+        python3 -m scripts.retrain   --bottleneck_dir=tf_files/bottlenecks   --how_many_training_steps=500   --model_dir=tf_files/models/   --summaries_dir=tf_files/training_summaries/"${ARCHITECTURE}"   --output_graph=tf_files/retrained_graph.pb   --output_labels=tf_files/retrained_labels.txt   --architecture="${ARCHITECTURE}"   --image_dir=tf_files/flower_photos
+
+        copy above 3 lines
+        step3 is retrain the whole model;
+
+live Web Test:
+    python3 live_web_test_new.py
+        Hint: 
+            1. Go to Files
+            2. Desktop/undesrstandingstepbystepvictora/tensorflow-for-poets-2
+            3. Right Click ->  open in terminal
+
+        copy "python3 live_web_test_new.py" or line 36 command paste in terminal (ctrl+shift +v)
+    --output ending in 'q'
+
+offline Train video:
+    python3 offline_train.py
+    
+    step0:
+        Home/user/Desktop/undesrstandingstepbystepvictora/tensorflow-for-poets-2/offline_training/"label_name"
+            --paste videos in that location
+
+    step1:
+        copy "python3 offline_train.py" command and use 'ctrl+ shift + v' paste in terminal 
+        (Home/user/Desktop/undesrstandingstepbystepvictora/tensorflow-for-poets-2)
+        Hint: 
+            1. Go to Files
+            2. Desktop/undesrstandingstepbystepvictora/tensorflow-for-poets-2
+            3. Right Click ->  open in terminal
+        
+    step2:
+        Home/user/Desktop/undesrstandingstepbystepvictora/tensorflow-for-poets-2/tf_files/flower_photos/label_name/
+        files stored 
+    step3:
+        IMAGE_SIZE=224
+	    ARCHITECTURE="mobilenet_0.50_${IMAGE_SIZE}"
+        python3 -m scripts.retrain   --bottleneck_dir=tf_files/bottlenecks   --how_many_training_steps=500   --model_dir=tf_files/models/   --summaries_dir=tf_files/training_summaries/"${ARCHITECTURE}"   --output_graph=tf_files/retrained_graph.pb   --output_labels=tf_files/retrained_labels.txt   --architecture="${ARCHITECTURE}"   --image_dir=tf_files/flower_photos
+
+        copy above 3 lines
+        step3 is retrain the whole model;
+        
+offline Train image:
+	step1:
+        	Home/user/Desktop/undesrstandingstepbystepvictora/tensorflow-for-poets-2/tf_files/flower_photos/"label_name"
+            	--paste image in that location
+         step2:
+        IMAGE_SIZE=224
+	    ARCHITECTURE="mobilenet_0.50_${IMAGE_SIZE}"
+        python3 -m scripts.retrain   --bottleneck_dir=tf_files/bottlenecks   --how_many_training_steps=500   --model_dir=tf_files/models/   --summaries_dir=tf_files/training_summaries/"${ARCHITECTURE}"   --output_graph=tf_files/retrained_graph.pb   --output_labels=tf_files/retrained_labels.txt   --architecture="${ARCHITECTURE}"   --image_dir=tf_files/flower_photos
+
+        copy above 3 lines
+        step3 is retrain the whole model;
+
+
+offline Test:
+    python3 offline_test.py
+
+    step1:
+        Home/user/Desktop/undesrstandingstepbystepvictora/tensorflow-for-poets-2/offline_testing/"label_name"
+            --paste videos in that location
+    
+    step2:
+        copy "python3 offline_test.py" or line 71 command and paste in terminal
+        (Home/user/Desktop/undesrstandingstepbystepvictora/tensorflow-for-poets-2)
+        Hint: 
+            1. Go to Files
+            2. Desktop/undesrstandingstepbystepvictora/tensorflow-for-poets-2
+            3. Right Click ->  open in terminal
+    
+    finally output will shown
